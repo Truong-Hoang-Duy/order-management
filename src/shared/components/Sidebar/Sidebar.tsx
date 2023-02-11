@@ -1,11 +1,11 @@
 import {
   AcUnitOutlined,
+  BadgeOutlined,
   HomeOutlined,
+  Inventory2Outlined,
+  PaymentsOutlined,
   PersonOutline,
   ShoppingCartOutlined,
-  BadgeOutlined,
-  LockOutlined,
-  LogoutOutlined,
 } from '@mui/icons-material';
 import { SvgIcon } from '@mui/material';
 import clsx from 'clsx';
@@ -16,7 +16,7 @@ import './Sidebar.scss';
 
 const Sidebar = () => {
   const { pathname } = useLocation();
-  const activeSidebar = pathname.slice(1);
+  const activeSidebar = pathname.split('/')[1];
   const [toggleMenu, setToggleMenu] = useState(false);
   const sidebarData = [
     {
@@ -41,13 +41,13 @@ const Sidebar = () => {
     },
     {
       id: 5,
-      name: 'password',
-      icon: LockOutlined,
+      name: 'payment',
+      icon: PaymentsOutlined,
     },
     {
       id: 6,
-      name: 'sign out',
-      icon: LogoutOutlined,
+      name: 'inventory',
+      icon: Inventory2Outlined,
     },
   ];
 

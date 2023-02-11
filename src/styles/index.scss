@@ -23,3 +23,12 @@ body {
   min-height: 100vh;
   font-family: 'Montserrat', sans-serif;
 }
+
+@media (max-width: 991px) {
+  #root > .App {
+    display: none;
+  }
+  #root > .not__responsive {
+    display: block;
+  }
+}

@@ -1,6 +1,14 @@
 import { initializeApp } from 'firebase/app';
-import { collection, CollectionReference, DocumentData, getFirestore } from 'firebase/firestore';
+import {
+  collection,
+  CollectionReference,
+  DocumentData,
+  DocumentReference,
+  getFirestore,
+} from 'firebase/firestore';
 import { CustomersType } from '../../modules/Customers/type';
+import { EmployeeType } from '../../modules/Employee/type';
+import { OrdersType } from '../../modules/Orders/type';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDDrxSY35U3NRzJBFXaIwlzVVlr7LKCTyM',
@@ -14,8 +22,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore(app);
+
 const createCollection = <T = DocumentData>(collectionName: string) => {
   return collection(db, collectionName) as CollectionReference<T>;
 };
-
 export const customersCol = createCollection<CustomersType>('Customers');
+export const ordersCol = createCollection<OrdersType>('Orders');
+export const employeeCol = createCollection<EmployeeType>('Employee');

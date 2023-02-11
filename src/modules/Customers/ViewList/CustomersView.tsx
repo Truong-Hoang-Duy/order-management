@@ -1,11 +1,11 @@
 import { getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
-import { Table } from '../../shared/components/Table';
-import { customersCol } from '../../shared/configs/firebase-config';
-import { columns } from './constant';
-import { CustomersType } from './type';
+import { Table } from '../../../shared/components/Table';
+import { customersCol } from '../../../shared/configs/firebase-config';
+import { CustomersType } from '../type';
+import { columns } from './MenuAction';
 
-const Customers = () => {
+const CustomersView = () => {
   const [customers, setCustomers] = useState<CustomersType[]>([]);
 
   useEffect(() => {
@@ -24,8 +24,8 @@ const Customers = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [customers]);
   return <Table row={customers} columns={columns} />;
 };
 
-export default Customers;
+export default CustomersView;

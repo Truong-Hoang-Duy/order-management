@@ -1,5 +1,5 @@
 export interface CustomersType {
-  id: string;
+  id?: string;
   CustFirstName: string;
   CustLastName: string;
   CustCity: string;
@@ -8,5 +8,9 @@ export interface CustomersType {
   CustState: string;
   CustStreet: string;
   CustZipcode: string;
-  action: boolean;
+  action?: boolean;
+}
+
+export interface CustomersIDType {
+  id: string;
 }

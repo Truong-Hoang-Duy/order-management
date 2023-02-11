@@ -1,7 +1,7 @@
-import React from 'react';
+import { CustomersFeatures } from '../modules/Customers/Features';
 
 const CustomersFeaturesPage = () => {
-  return <div></div>;
+  return <CustomersFeatures />;
 };
 
 export default CustomersFeaturesPage;

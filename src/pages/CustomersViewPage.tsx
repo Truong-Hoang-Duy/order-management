@@ -1,19 +1,19 @@
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { Customers } from '../modules/Customers';
+import { CustomersView } from '../modules/Customers/ViewList';
 
-const CustomersPage = () => {
+const CustomersViewPage = () => {
   const navigate = useNavigate();
   return (
     <>
       <div className="text-right block mr-3 mt-4">
         <Button variant="outlined" onClick={() => navigate('/customers/create')}>
-          Create custermer
+          Create custormers
         </Button>
       </div>
-      <Customers />
+      <CustomersView />
     </>
   );
 };
 
-export default CustomersPage;
+export default CustomersViewPage;

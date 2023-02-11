@@ -1,5 +1,9 @@
 import { GridColDef } from '@mui/x-data-grid';
-import { Action } from '../../shared/components/Action';
+import { deleteDoc, doc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { Action } from '../../../shared/components/Action';
+import { customersCol } from '../../../shared/configs/firebase-config';
 
 export const columns: GridColDef[] = [
   {
@@ -21,7 +25,7 @@ export const columns: GridColDef[] = [
   },
   {
     field: 'CustStreet',
-    headerName: 'Stress',
+    headerName: 'Street',
     flex: 1,
   },
   {
@@ -58,7 +62,26 @@ export const columns: GridColDef[] = [
     maxWidth: 30,
     editable: true,
     renderCell: ({ row }) => {
-      return <Action row={row} />;
+      const navigate = useNavigate();
+
+      const handleEdit = (id: string) => {
+        navigate(`/customers/edit/${id}`);
+      };
+
+      const handleRemove = async (id: string) => {
+        const customersDocRef = doc(customersCol, id);
+        await deleteDoc(customersDocRef);
+        toast.success('Delete success', {
+          pauseOnHover: false,
+        });
+      };
+      return (
+        <Action
+          row={row}
+          handleEdit={() => handleEdit(row.id)}
+          handleRemove={() => handleRemove(row.id)}
+        />
+      );
     },
   },
 ];

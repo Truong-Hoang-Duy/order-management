@@ -24,7 +24,7 @@ const EmployeeView = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [employee]);
+  }, []);
   return <Table row={employee} columns={columns} />;
 };
 

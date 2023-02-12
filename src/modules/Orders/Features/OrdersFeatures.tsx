@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import * as yup from 'yup';
 import { CustomForm } from '../../../shared/components/CustomForm';
 import { ordersCol } from '../../../shared/configs/firebase-config';
+import { fFullDate } from '../../../shared/utils/formatDate';
 import { textField } from '../constant';
 
 interface initType {
@@ -46,7 +47,7 @@ const OrdersFeatures = () => {
           console.log(err);
         });
     }
-  }, [id]);
+  }, []);
 
   const validationSchema = yup.object({
     CusID: yup.string().required('Please select your customers ID'),
@@ -54,8 +55,8 @@ const OrdersFeatures = () => {
   });
 
   const handleClick = (values: initType, { resetForm }: { resetForm: () => void }) => {
-    const checkOrderDate = new Date(values['OrderDate']).getFullYear() !== 2020;
-    const checkShipDate = new Date(values['ShipDate']).getFullYear() !== 2020;
+    const checkOrderDate = fFullDate(new Date(values['OrderDate'])) !== '01/01/2020';
+    const checkShipDate = fFullDate(new Date(values['ShipDate'])) !== '01/01/2020';
     if (pathname.includes('orders/create')) {
       if (checkOrderDate && checkShipDate) {
         addDoc(ordersCol, {

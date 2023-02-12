@@ -6,7 +6,10 @@ const CustomersViewPage = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="text-right block mr-3 mt-4">
+      <div className="flex justify-end gap-4 mr-3 mt-4">
+        <Button variant="contained" onClick={() => navigate('/customers/chart')}>
+          Chart
+        </Button>
         <Button variant="outlined" onClick={() => navigate('/customers/create')}>
           Create custormers
         </Button>

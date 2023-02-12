@@ -1,13 +1,13 @@
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import { getDocs } from 'firebase/firestore';
 import { useFormik } from 'formik';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import * as yup from 'yup';
 import { CustomersIDType } from '../../../modules/Customers/type';
 import { EmployeeIDType } from '../../../modules/Employee/type';
 import { customersCol, employeeCol } from '../../configs/firebase-config';
-import { fDateReverse } from '../../utils/formatDate';
+import { fDateReverse, fFullDate } from '../../utils/formatDate';
 import { Heading } from '../Heading';
 
 interface CustomFormProps<T extends Record<string, unknown>> {
@@ -55,7 +55,7 @@ const CustomForm = <T extends Record<string, unknown>>(props: CustomFormProps<T>
       .catch((err) => {
         console.log(err);
       });
-  }, [employee]);
+  }, []);
 
   const [customers, setCustomers] = useState<CustomersIDType[]>([]);
   useEffect(() => {
@@ -72,7 +72,7 @@ const CustomForm = <T extends Record<string, unknown>>(props: CustomFormProps<T>
       .catch((err) => {
         console.log(err);
       });
-  }, [customers]);
+  }, []);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -96,7 +96,7 @@ const CustomForm = <T extends Record<string, unknown>>(props: CustomFormProps<T>
           let checkMessageDateHired = null;
           if (item.name === 'DateHired' || item.name === 'OrderDate' || item.name === 'ShipDate') {
             checkMessageDateHired =
-              new Date(values[`${item.name}`] as Date).getFullYear() === 2020 &&
+              fFullDate(new Date(values[`${item.name}`] as Date)) === '01/01/2020' &&
               touched[`${item.name}`];
           }
           //

@@ -24,7 +24,7 @@ const CustomersView = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [customers]);
+  }, []);
   return <Table row={customers} columns={columns} />;
 };
 

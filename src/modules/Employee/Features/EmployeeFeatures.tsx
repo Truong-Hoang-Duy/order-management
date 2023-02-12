@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import * as yup from 'yup';
 import { CustomForm } from '../../../shared/components/CustomForm';
 import { employeeCol } from '../../../shared/configs/firebase-config';
-import { fDateReverse } from '../../../shared/utils/formatDate';
+import { fDateReverse, fFullDate } from '../../../shared/utils/formatDate';
 import { textField } from '../constant';
 
 interface initType {
@@ -57,7 +57,7 @@ const EmployeeFeatures = () => {
           console.log(err);
         });
     }
-  }, [id]);
+  }, []);
 
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -76,7 +76,7 @@ const EmployeeFeatures = () => {
   });
 
   const handleClick = (values: initType, { resetForm }: { resetForm: () => void }) => {
-    const checkNotDate = new Date(values['DateHired']).getFullYear() !== 2020;
+    const checkNotDate = fFullDate(new Date(values['DateHired'])) !== '01/01/2020';
     if (pathname.includes('employee/create')) {
       if (checkNotDate) {
         addDoc(employeeCol, {

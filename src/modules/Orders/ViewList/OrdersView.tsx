@@ -24,7 +24,7 @@ const OrdersView = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [orders]);
+  }, []);
   return <Table row={orders} columns={columns} />;
 };
 

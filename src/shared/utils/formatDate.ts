@@ -26,3 +26,16 @@ export function fDateReverse(date: number) {
 
   return dateFormat.getFullYear() + '-' + month + '-' + day;
 }
+
+export function fFullDate(date: Date) {
+  let month = '';
+  let day = '';
+  if (date.getMonth() < 10) {
+    month = `0${date.getMonth() + 1}`;
+  } else month = `${date.getMonth() + 1}`;
+
+  if (date.getDate() < 10) {
+    day = `0${date.getDate()}`;
+  } else day = `${date.getDate()}`;
+  return day + '/' + month + '/' + date.getFullYear();
+}

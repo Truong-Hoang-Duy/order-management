@@ -7,7 +7,10 @@ const EmployeeViewPage = () => {
 
   return (
     <>
-      <div className="text-right block mr-3 mt-4">
+      <div className="flex justify-end gap-4 mr-3 mt-4">
+        <Button variant="contained" onClick={() => navigate('/employee/chart')}>
+          Chart
+        </Button>
         <Button variant="outlined" onClick={() => navigate('/employee/create')}>
           Create employee
         </Button>

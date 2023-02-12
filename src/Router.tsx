@@ -34,6 +34,10 @@ export const routes: RouteObject[] = [
             path: 'edit/:id',
             element: <CustomersFeaturesPage />,
           },
+          {
+            path: 'chart',
+            element: <Chart />,
+          },
         ],
       },
 
@@ -70,12 +74,11 @@ export const routes: RouteObject[] = [
             path: 'edit/:id',
             element: <EmployeeFeaturesPage />,
           },
+          {
+            path: 'chart',
+            element: <Chart />,
+          },
         ],
-      },
-
-      {
-        path: 'chart',
-        element: <Chart />,
       },
     ],
   },
